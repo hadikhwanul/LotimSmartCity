@@ -23,28 +23,30 @@
                 <thead class="text-center">
                     <tr>
                         <th style="width: 10%;">No</th>
-                        <th style="width: 25%;">Portal</th>
-                        <th style="width: 25%;">Link</th>
-                        <th style="width: 20%;">Status</th>
+                        <th style="width: 20%;">Portal</th>
+                        <th style="width: 15%;">Kategori</th>
+                        <th style="width: 20%;">Link</th>
+                        <th style="width: 15%;">Status</th>
                         <th style="width: 20%;">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <tr>
 
-                        @foreach ( $branding as $sb )
+                        @foreach ( $governance as $sg )
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <a href="SmartBranding/{{ $sb->slug }}" style="">
-                            <strong>{{ $sb->portal }}
+                            <a href="SmartGovernance/{{ $sg->slug }}" style="">
+                            <strong>{{ $sg->portal }}
                                 </a>
                             </strong>
                         </td>
-                        <td class=><a href="{{ $sb->link }}" target="_blank">{{ $sb->link }} </a></td>
+                        <td class="text-center"><a href="/categories/{{ $sg->category->slug }}"><b>{{ $sg->category->nama }}</b></a></td>
+                        <td class=><a href="{{ $sg->link }}" target="_blank">{{ $sg->link }} </a></td>
                         <td class="text-center">
                             <span
-                                class="badge {{ ($sb->status === "Active") ? 'bg-label-success me-1' : 'bg-label-danger me-1'  }}">
-                                {{ $sb->status }}</span></td>
+                                class="badge {{ ($sg->status === "Active") ? 'bg-label-success me-1' : 'bg-label-danger me-1'  }}">
+                                {{ $sg->status }}</span></td>
                         <td class="text-center">
                             <div class="row col-lg-3 align-items-end">
                                 <div class="demo-inline-spacing">

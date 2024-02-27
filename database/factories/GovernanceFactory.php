@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Branding>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Governance>
  */
-class BrandingFactory extends Factory
+class GovernanceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,14 @@ class BrandingFactory extends Factory
     {
         return [
             'portal' => fake()->company(),
+            'category_id' => mt_rand(1,3),
+            'user_id' => mt_rand(1,5),
             'slug' => fake()->unique()->slug(),
             'deskripsi' => fake()->realText($maxNbChars = 200, $indexSize = 2),
             'link' => fake()->domainName(), 
             'status' => fake()->randomElement(['Active', 'Deactive']),
-            'logo_sb' => fake()->image(null, 640, 480)
+            'logo_sg' => fake()->image(null, 640, 480)
         ];
+        
     }
 }

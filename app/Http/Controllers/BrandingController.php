@@ -39,12 +39,12 @@ class BrandingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Branding $branding)
     {
         return view('Admin.Branding.ViewSB', [
-            "title" => "detail halaman",
             "judul" => "Smart Branding",
-            "branding" => Branding::find($id)
+            "kategori" => "Smart Branding",
+            "branding" => $branding
         ]);
     }
 

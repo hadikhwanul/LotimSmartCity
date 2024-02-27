@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Branding extends Model
+class Governance extends Model
 {
     use HasFactory;
-    // protected $fillable = ['portal','deskripsi','link','logo_sb'];
     protected $guarded =['id'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

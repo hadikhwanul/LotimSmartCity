@@ -4,7 +4,7 @@
         <div class="app-brand demo">
           <a href="/" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <img src="admin/assets/img/favicon/logo.png" alt="">
+              <img src="{{ URL::asset('admin/assets/img/favicon/logo.png') }}" alt="">
             </span>
 
           </a>
@@ -28,11 +28,23 @@
           <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Dimensi</span>
           </li>
-          <li class="menu-item {{ ($judul === "Smart Governance") ? 'active' : '' }}">
-            <a href="tables-basic.html" class="menu-link">
+          <li class="menu-item {{ ($judul === "Smart Governance" ||$judul === "Category Smart Govenances") ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-window-open"></i>
-              <div data-i18n="Basic">Smart Governance</div>
+              <div data-i18n="Account Settings">Smart Governance</div>
             </a>
+            <ul class="menu-sub">
+              <li class="menu-item {{ ($judul === "Smart Governance") ? 'active' : '' }}">
+                <a href="/Admin-SmartGovernance" class="menu-link">
+                  <div data-i18n="Account">Smart Governance</div>
+                </a>
+              </li>
+              <li class="menu-item {{ ($judul === "Category Smart Govenances") ? 'active' : '' }}">
+                <a href="/Admin-CategorySmartGovernance" class="menu-link">
+                  <div data-i18n="Basic">Category</div>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item {{ ($judul === "Smart Economy") ? 'active' : '' }}">
             <a href="tables-basic.html" class="menu-link">
@@ -108,7 +120,7 @@
           <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Settings</span>
           </li>
-          <li class="menu-item">
+          <li class="menu-item {{ ($judul === "Account" ||$judul === "Forgot Password" || $judul === "Account center" ) ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-cog"></i>
               <div data-i18n="Account Settings">Account Settings</div>

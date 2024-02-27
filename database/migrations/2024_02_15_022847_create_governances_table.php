@@ -11,21 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brandings', function (Blueprint $table) {
+        Schema::create('governances', function (Blueprint $table) {
             $table->id();
             $table->string('portal');
+            $table->foreignId('category_id');
+            $table->foreignId('user_id');
             $table->string('slug')->unique();
             $table->string('deskripsi');
             $table->text('link');
             $table->string('status');
-            $table->string('logo_sb')->nullable();
+            $table->string('logo_sg')->nullable();
             $table->timestamp('published_it')->nullable();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('brandings');
+        Schema::dropIfExists('governances');
     }
 };
