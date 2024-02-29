@@ -14,10 +14,11 @@ class GovernanceController extends Controller
      */
     public function index()
     {
+
         return view('Admin.Governance.governance',[
             "judul" => "Smart Governance",
             "kategori" => "Dimensi",
-            "governance" => Governance::all()
+            "governance" => Governance::first()->filter(request(['search', 'category']))->paginate(5)->withQueryString()
         ]);
     }
 

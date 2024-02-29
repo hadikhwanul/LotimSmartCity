@@ -31,7 +31,7 @@
                         @foreach ( $category as $cg )
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <a href="/categories/{{ $cg->slug }}" style="">
+                            <a href="/Admin-SmartGovernance?category={{ $cg->slug }}" style="">
                                 <strong>{{ $cg->nama }}
                             </a>
                             </strong>

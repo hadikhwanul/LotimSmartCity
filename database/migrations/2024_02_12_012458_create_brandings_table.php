@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('portal');
             $table->string('slug')->unique();
-            $table->string('deskripsi');
+            $table->string('alamat');
+            $table->text('deskripsi');
             $table->text('link');
             $table->string('status');
             $table->string('logo_sb')->nullable();

@@ -17,14 +17,17 @@ class GovernanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'portal' => fake()->company(),
-            'category_id' => mt_rand(1,3),
+            'category_id' => mt_rand(1,2),
             'user_id' => mt_rand(1,5),
-            'slug' => fake()->unique()->slug(),
-            'deskripsi' => fake()->realText($maxNbChars = 200, $indexSize = 2),
-            'link' => fake()->domainName(), 
-            'status' => fake()->randomElement(['Active', 'Deactive']),
-            'logo_sg' => fake()->image(null, 640, 480)
+            'portal' => $this->faker->company(),
+            'slug' => $this->faker->unique()->slug(),
+            'alamat' => $this->faker->address(),
+            'deskripsi' => collect($this->faker->paragraphs(mt_rand(2,3)))
+                        ->map(fn($p) => "<p>$p</p>")
+                        ->implode(''),
+            'link' => $this->faker->domainName(), 
+            'status' => $this->faker->randomElement(['Active', 'Deactive']),
+            'logo_sg' => $this->faker->image(null, 640, 480)
         ];
         
     }

@@ -17,12 +17,13 @@ class BrandingFactory extends Factory
     public function definition(): array
     {
         return [
-            'portal' => fake()->company(),
-            'slug' => fake()->unique()->slug(),
-            'deskripsi' => fake()->realText($maxNbChars = 200, $indexSize = 2),
-            'link' => fake()->domainName(), 
-            'status' => fake()->randomElement(['Active', 'Deactive']),
-            'logo_sb' => fake()->image(null, 640, 480)
+            'portal' => $this->faker->company(),
+            'slug' => $this->faker->unique()->slug(),
+            'alamat' => $this->faker->address(),
+            'deskripsi' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
+            'link' => $this->faker->domainName(), 
+            'status' => $this->faker->randomElement(['Active', 'Deactive']),
+            'logo_sb' => $this->faker->image(null, 640, 480)
         ];
     }
 }

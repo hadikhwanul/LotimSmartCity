@@ -21,7 +21,7 @@ Route::get('/', function () {
 //Admin
 Route::get('/Admin-SmartGovernance', [GovernanceController::class, 'index']);
 Route::get('/SmartGovernance/{governance:slug}', [GovernanceController::class, 'show']);
-//User
+//Category Smart Governance
 Route::get('/Admin-CategorySmartGovernance', [CategoryController::class, 'index']);
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show']);
 

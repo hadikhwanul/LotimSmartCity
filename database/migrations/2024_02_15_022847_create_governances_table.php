@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('governances', function (Blueprint $table) {
             $table->id();
-            $table->string('portal');
             $table->foreignId('category_id');
             $table->foreignId('user_id');
+            $table->string('portal');
             $table->string('slug')->unique();
-            $table->string('deskripsi');
-            $table->text('link');
+            $table->string('alamat')->nullable();
+            $table->text('deskripsi');
+            $table->text('link')->nullable();
             $table->string('status');
             $table->string('logo_sg')->nullable();
             $table->timestamp('published_it')->nullable();

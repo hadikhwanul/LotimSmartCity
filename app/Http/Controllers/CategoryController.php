@@ -16,7 +16,7 @@ class CategoryController extends Controller
         return view('Admin.Governance.categorysg', [ 
             "judul" => "Category Smart Govenances",
             "kategori" => "Dimensi",
-            "category" => Category::all()
+            "category" => Category::latest()->get()
     
         ]);
     }

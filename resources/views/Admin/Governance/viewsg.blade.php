@@ -24,7 +24,11 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title"><b>{{ $governance->portal }}</b></h5>
+                            <h3 class="card-title"><b>{{ $governance->portal }}</b></h3>
+                            <h5 class="card-title"> {{ $governance->category->nama }}</h5>
+                            <p class="card-text"><strong>
+                               {{$governance->alamat }}</strong>
+                            </p>
                             <p class="card-text">
                                 {!! $governance->deskripsi !!}
                             </p>
@@ -32,7 +36,8 @@
                             <p class="card-text"><small class="text-muted"><span
                                 class="badge {{ ($governance->status === "Active") ? 'bg-label-success me-1' : 'bg-label-danger me-1'  }}">
                                 {{ $governance->status }}</span></td></small></p>
-                        </div>
+                            <p class="card-text"><strong>{{$governance->created_at->diffForHumans()  }}</strong></p>
+                            </div>
                     </div>
                 </div>
             </div>
