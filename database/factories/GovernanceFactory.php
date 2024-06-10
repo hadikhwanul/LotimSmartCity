@@ -18,7 +18,6 @@ class GovernanceFactory extends Factory
     {
         return [
             'category_id' => mt_rand(1,2),
-            'user_id' => mt_rand(1,5),
             'portal' => $this->faker->company(),
             'slug' => $this->faker->unique()->slug(),
             'alamat' => $this->faker->address(),

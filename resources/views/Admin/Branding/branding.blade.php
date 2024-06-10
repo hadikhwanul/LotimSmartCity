@@ -10,7 +10,7 @@
                 {{ $kategori }} / </span>
                 {{ $judul }}</h4>
             <div class=" buy-now ">
-                <a href="" target="_blank" class="btn btn-danger btn-buy-now" style="align-items: flex-end;"><i
+                <a href="/Admin-SmartBranding/create" class="btn btn-danger btn-buy-now" style="align-items: flex-end;"><i
                         class='bx bx-plus'></i>Tambah</a>
             </div>
         </div>
@@ -18,6 +18,12 @@
     <!-- Hoverable Table rows -->
     <div class="card">
         <h5 class="card-header">Instansi / Dinas</h5>
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
                 <thead class="text-center">
@@ -35,7 +41,7 @@
                         @foreach ( $branding as $sb )
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                            <a href="SmartBranding/{{ $sb->slug }}" style="">
+                            <a href="/Admin-SmartBranding/{{ $sb->slug }}" style="">
                             <strong>{{ $sb->portal }}
                                 </a>
                             </strong>
@@ -46,14 +52,19 @@
                                 class="badge {{ ($sb->status === "Active") ? 'bg-label-success me-1' : 'bg-label-danger me-1'  }}">
                                 {{ $sb->status }}</span></td>
                         <td class="text-center">
-                            <div class="row col-lg-3 align-items-end">
+                            <div class="row col-lg-3 align-items-between d-inline">
                                 <div class="demo-inline-spacing">
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <span class="tf-icons bx bx-edit-alt me-1"></span>&nbsp; Edit
-                                    </button>
-                                    <button type="button" class="btn btn-outline-secondary">
-                                        <span class="tf-icons bx bx-trash me-1"></span>&nbsp; Delete
-                                    </button>
+                                    <a href="/Admin-SmartBranding/{{ $sb->slug }}/edit"
+                                        class="btn btn-outline-primary">
+                                        <span class="tf-icons bx bx-edit-alt me-1"></span>&nbsp; Edit </a>
+                                    <form action="/Admin-SmartBranding/{{ $sb->slug }}" method="POST" class="d-inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-secondary"
+                                            onclick="return confirm('Yakin Ingin Menghapus Data')">
+                                            <span class="tf-icons bx bx-trash me-1"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
@@ -63,6 +74,9 @@
 
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <span>{{ $branding->onEachSide(0)->links() }}</span>
         </div>
     </div>
     <!--/ Hoverable Table rows -->

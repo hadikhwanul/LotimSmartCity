@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('governances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->foreignId('user_id');
             $table->string('portal');
             $table->string('slug')->unique();
             $table->string('alamat')->nullable();

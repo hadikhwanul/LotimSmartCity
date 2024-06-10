@@ -8,14 +8,20 @@
                     {{ $kategori }} / </span>
                 {{ $judul }}</h4>
             <div class=" buy-now ">
-                <a href="" target="_blank" class="btn btn-danger btn-buy-now" style="align-items: flex-end;"><i
-                        class='bx bx-plus'></i>Tambah</a>
+                <a href="/Admin-CategorySmartGovernance/create" class="btn btn-danger btn-buy-now"
+                    style="align-items: flex-end;"><i class='bx bx-plus'></i>Tambah</a>
             </div>
         </div>
     </div>
     <!-- Hoverable Table rows -->
     <div class="card">
         <h5 class="card-header">Category</h5>
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
                 <thead class="text-center">
@@ -37,14 +43,19 @@
                             </strong>
                         </td>
                         <td class="text-center mx-auto">
-                            <div class="row align-items-center">
+                            <div class="row col-lg-3 align-items-between d-inline">
                                 <div class="demo-inline-spacing">
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <span class="tf-icons bx bx-edit-alt me-1"></span>&nbsp; Edit
-                                    </button>
-                                    <button type="button" class="btn btn-outline-secondary">
-                                        <span class="tf-icons bx bx-trash me-1"></span>&nbsp; Delete
-                                    </button>
+                                    <a href="/Admin-CategorySmartGovernance/{{ $cg->slug }}/edit"
+                                        class="btn btn-outline-primary">
+                                        <span class="tf-icons bx bx-edit-alt me-1"></span>&nbsp; Edit </a>
+                                    <form action="/Admin-CategorySmartGovernance/{{ $cg->slug }}" method="POST" class="d-inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-secondary"
+                                            onclick="return confirm('Yakin Ingin Menghapus Data')">
+                                            <span class="tf-icons bx bx-trash me-1"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
@@ -54,6 +65,9 @@
 
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <span>{{ $category->onEachSide(0)->links() }}</span>
         </div>
     </div>
     <!--/ Hoverable Table rows -->

@@ -31,9 +31,20 @@
 
   <!-- Page CSS -->
 
+  {{-- Trix Source --}}
+  
   <!-- Helpers -->
   <script src="{{ URL::asset('admin/assets/vendor/js/helpers.js') }}"></script>
-
+  
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-  <script src="{{ URL::asset('admin/assets/js/config.js') }}"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{{ URL::asset('admin/assets/js/config.js') }}"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+  <style>
+    trix-toolbar [data-trix-button-group="file-tools"]  {
+      display: none;
+    }
+  </style>

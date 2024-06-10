@@ -40,11 +40,14 @@
                                     &copy; Copyright <strong>DISKOMINFO LOTIM 2024</strong>
                                 </div>
                             </div>
-                            <div>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger"><i
-                                        class="bx bx-log-out-circle"></i>
-                                    Logout</a>
-                            </div>
+                            <form action="/Admin-Logout" method="POST">
+                                @csrf
+                                <div>
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">
+                                        <i class="bx bx-log-out-circle"></i>
+                                        Logout</button>
+                                </div>
+                            </form>
                         </div>
                     </footer>
                     <!-- / Footer -->
@@ -83,6 +86,12 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+        document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+    })
+    </script>
 </body>
 
 </html>

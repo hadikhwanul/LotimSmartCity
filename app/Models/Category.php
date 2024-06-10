@@ -11,8 +11,23 @@ class Category extends Model
     
     protected $guarded = ['id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function governances()
     {
-        return $this->hasMany(Governance::class);
+        return $this->hasOne(Governance::class, 'category_id');
+    }
+
+    
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nama'
+            ]
+        ];
     }
 }

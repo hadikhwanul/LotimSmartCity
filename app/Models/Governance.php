@@ -2,15 +2,23 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Governance extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
+    
     protected $guarded =['id'];
+    
 
-    protected $with = ['category'];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    // protected $with = ['category'];
     
     public function scopeFilter($query, array $filters) {
         $query->when(($filters['search'] ?? false), function($query, $search) {
@@ -25,12 +33,20 @@ class Governance extends Model
     }      
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function author(){
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'portal'
+            ]
+        ];
+    }
 
 }
